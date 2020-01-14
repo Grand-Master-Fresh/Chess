@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-<<<<<<< HEAD
-  devise_for :users
-=======
 Rails.application.routes.draw do
->>>>>>> Add Rubocop gem and config files
+  devise_for :users
   root 'static#landing'
 end
