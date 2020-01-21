@@ -4,4 +4,8 @@ class GamesController < ApplicationController
     @games = Game.available
   end
 
+  def create
+    @game = Game.new
+  end
+
 end
