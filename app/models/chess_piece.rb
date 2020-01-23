@@ -79,5 +79,27 @@ class ChessPiece < ApplicationRecord
       fail 'path is not a straight line'
     else return false
     end
-  end  
+  end 
+
+# Method for capturing a piece.
+
+# If the intended target destination has a piece that is from the opposing player, that piece will be removed from the board.
+
+# Will return a fail if the target destination is occupied by your own piece.
+
+  def move_to!(new_x, new_y)
+    @game = game
+    if occupied?(new_x, new_y)
+      @piece_at_destination = @game.pieces.find_by(x_coordinates: new_x, y_coordinates: new_y)
+      if color == @piece_at_destination.color
+        fail 'destination occupied by piece of same color'
+      else
+        @piece_at_destination.update_attributes(x_coordinates: nil, y_coordinates: nil, status: 'captured')
+        @status = @piece_at_destination.status
+        @captured = true
+      end
+    else @captured = false
+    end
+  end 
+  
 end
