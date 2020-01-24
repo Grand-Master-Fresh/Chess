@@ -5,6 +5,7 @@ before_action :authenticate_user!, only: [:new, :create]
     @games = Game.all
   end
 
+
   def new
     @game = Game.new
   end
