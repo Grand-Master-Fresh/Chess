@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-before_action :authenticate_user!, only: [:new, :create]
+before_action :authenticate_user!, only: [:new, :create, :update]
 
   def index
     @games = Game.all
@@ -16,10 +16,13 @@ before_action :authenticate_user!, only: [:new, :create]
   end
 
   def update
-   @game = Game.find(params[:id])
-   @game.update_attributes(:black_player_id => current_user.id)
-   redirect_to game_path(@game)
-  end
+      @game = Game.find_by_id(params[:id])
+      @game.class.where(user_id:nil).update_all(user_id: current_user.id)
+
+      @game.update_attributes(game_params)
+      @game.users << current_user
+      redirect_to game_path(@game)
+    end
 
   private
 
