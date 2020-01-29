@@ -1,0 +1,5 @@
+class PiecesController < ApplicationController
+
+
+
+end

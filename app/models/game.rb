@@ -8,6 +8,8 @@ class Game < ApplicationRecord
 
   belongs_to :black_player
 
+  
+
   def populate!
     place_black_left_half!
     place_black_right_half!
@@ -54,6 +56,6 @@ class Game < ApplicationRecord
   def create_piece(type, color, x_position, y_position)
   end
 
-    
+
 
 end
