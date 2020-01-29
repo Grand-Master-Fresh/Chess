@@ -1,77 +1,81 @@
 <div class="title">
-        <h1>Grand Master Fresh</h1>
-    </div>
+    <h1><%= @game.name %></h1>
+</div>
+    
     <div class="chessboard">
-    <!-- Top Row -->
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <!-- 2nd from Top -->
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <!-- 3rd from top -->
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <!-- 4th from top -->
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <!-- 5th from top -->
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <!-- 6th from top -->
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <!-- 7th from top -->
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <!-- bottom row -->
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
-    <div class="black"></div>
-    <div class="white"></div>
+        
+        <!-- Top Row -->
+        <div class="white"><%= piece_at(0, 7) %></div>
+        <div class="black"><%= piece_at(1, 7) %></div>
+        <div class="white"><%= piece_at(2, 7) %></div>
+        <div class="black"><%= piece_at(3, 7) %></div>
+        <div class="white"><%= piece_at(4, 7) %></div>
+        <div class="black"><%= piece_at(5, 7) %></div>
+        <div class="white"><%= piece_at(6, 7) %></div>
+        <div class="black"><%= piece_at(7, 7) %></div>
+        <!-- 2nd from Top -->
+        <div class="black"><%= piece_at(0, 6) %></div>
+        <div class="white"><%= piece_at(1, 6) %></div>
+        <div class="black"><%= piece_at(2, 6) %></div>
+        <div class="white"><%= piece_at(3, 6) %></div>
+        <div class="black"><%= piece_at(4, 6) %></div>
+        <div class="white"><%= piece_at(5, 6) %></div>
+        <div class="black"><%= piece_at(6, 6) %></div>
+        <div class="white"><%= piece_at(7, 6) %></div>
+        <!-- 3rd from top -->
+        <div class="white"><%= piece_at(0, 5) %></div>
+        <div class="black"><%= piece_at(1, 5) %></div>
+        <div class="white"><%= piece_at(2, 5) %></div>
+        <div class="black"><%= piece_at(3, 5) %></div>
+        <div class="white"><%= piece_at(4, 5) %></div>
+        <div class="black"><%= piece_at(5, 5) %></div>
+        <div class="white"><%= piece_at(6, 5) %></div>
+        <div class="black"><%= piece_at(7, 5) %></div>
+        <!-- 4th from top -->
+        <div class="black"><%= piece_at(0, 4) %></div>
+        <div class="white"><%= piece_at(1, 4) %></div>
+        <div class="black"><%= piece_at(2, 4) %></div>
+        <div class="white"><%= piece_at(3, 4) %></div>
+        <div class="black"><%= piece_at(4, 4) %></div>
+        <div class="white"><%= piece_at(5, 4) %></div>
+        <div class="black"><%= piece_at(6, 4) %></div>
+        <div class="white"><%= piece_at(7, 4) %></div>
+        <!-- 5th from top -->
+        <div class="white"><%= piece_at(0, 3) %></div>
+        <div class="black"><%= piece_at(1, 3) %></div>
+        <div class="white"><%= piece_at(2, 3) %></div>
+        <div class="black"><%= piece_at(3, 3) %></div>
+        <div class="white"><%= piece_at(4, 3) %></div>
+        <div class="black"><%= piece_at(5, 3) %></div>
+        <div class="white"><%= piece_at(6, 3) %></div>
+        <div class="black"><%= piece_at(7, 3) %></div>
+        <!-- 6th from top -->
+        <div class="black"><%= piece_at(0, 2) %></div>
+        <div class="white"><%= piece_at(1, 2) %></div>
+        <div class="black"><%= piece_at(2, 2) %></div>
+        <div class="white"><%= piece_at(3, 2) %></div>
+        <div class="black"><%= piece_at(4, 2) %></div>
+        <div class="white"><%= piece_at(5, 2) %></div>
+        <div class="black"><%= piece_at(6, 2) %></div>
+        <div class="white"><%= piece_at(7, 2) %></div>
+        <!-- 7th from top -->
+        <div class="white"><%= piece_at(0, 1) %></div>
+        <div class="black"><%= piece_at(1, 1) %></div>
+        <div class="white"><%= piece_at(2, 1) %></div>
+        <div class="black"><%= piece_at(3, 1) %></div>
+        <div class="white"><%= piece_at(4, 1) %></div>
+        <div class="black"><%= piece_at(5, 1) %></div>
+        <div class="white"><%= piece_at(6, 1) %></div>
+        <div class="black"><%= piece_at(7, 1) %></div>
+        <!-- bottom row -->
+        <div class="black"><%= piece_at(0, 0) %></div>
+        <div class="white"><%= piece_at(1, 0) %></div>
+        <div class="black"><%= piece_at(2, 0) %></div>
+        <div class="white"><%= piece_at(3, 0) %></div>
+        <div class="black"><%= piece_at(4, 0) %></div>
+        <div class="white"><%= piece_at(5, 0) %></div>
+        <div class="black"><%= piece_at(6, 0) %></div>
+        <div class="white"><%= piece_at(7, 0) %></div>
+            
+        
     </div>
