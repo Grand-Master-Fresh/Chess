@@ -3,9 +3,27 @@ class Piece < ApplicationRecord
   belongs_to :game, optional: true
   has_many :user
 
+
+  # This method checks whether a piece is present at (x, y).
+  
   def occupied?(x, y)
     game.pieces.where(x_position: x, y_position: y).present?
   end
+
+# Checks path and defines it, if possible (Knight is the exception).  
+
+  def check_path(x1, y1, x2, y2)
+    if y1 == y2
+      return 'horizontal'
+    elsif x1 == x2
+      return 'vertical'
+    else
+      # Move diagonally.
+      @slope = (y2 - y1).to_f / (x2 - x1).to_f
+    end
+  end
+
+# Method to determine whether the path between selected piece and destination is obstructed by another piece (Knight will be exception to the rule).
 
   def is_obstructed?(destination_x, destination_y)
     @game = game
@@ -65,7 +83,13 @@ class Piece < ApplicationRecord
       fail 'path is not a straight line'
     else return false
     end
-  end
+  end 
+
+# Method for capturing a piece.
+
+# If the intended target destination has a piece that is from the opposing player, that piece will be removed from the board.
+
+# Will return a fail if the target destination is occupied by your own piece.
 
   def move_to!(new_x, new_y)
     @game = game
@@ -80,51 +104,14 @@ class Piece < ApplicationRecord
       end
     else @captured = false
     end
+
   end
-
-
-
-
-
-
-
-
 
   private
 
-  def piece_params
-  	params.require(:piece).permit(:x_position, :y_position)
-  end
+    def piece_params
+    	params.require(:piece).permit(:x_position, :y_position)
+    end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  end 
 end
