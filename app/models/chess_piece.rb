@@ -1,12 +1,14 @@
 class ChessPiece < ApplicationRecord
-
+  belongs_to :user
+  belongs_to :game
+  has_many :user
 # This method checks whether a piece is present at (x, y).
-  
+
   def occupied?(x, y)
     game.pieces.where(x_coordinates: x, y_coordinates: y).present?
   end
 
-# Checks path and defines it, if possible (Knight is the exception).  
+# Checks path and defines it, if possible (Knight is the exception).
 
   def check_path(x1, y1, x2, y2)
     if y1 == y2
@@ -79,7 +81,7 @@ class ChessPiece < ApplicationRecord
       fail 'path is not a straight line'
     else return false
     end
-  end 
+  end
 
 # Method for capturing a piece.
 
@@ -100,6 +102,6 @@ class ChessPiece < ApplicationRecord
       end
     else @captured = false
     end
-  end 
-  
+  end
+
 end

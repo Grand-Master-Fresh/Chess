@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 2020_01_23_002547) do
   end
 
   create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.string "state"
     t.integer "white_player_id"
     t.integer "black_player_id"
-    t.string "name"
-    t.integer "state"
+    t.integer "winning_player_id"
+    t.integer "turn"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,11 +52,14 @@ ActiveRecord::Schema.define(version: 2020_01_23_002547) do
   end
 
   create_table "pieces", force: :cascade do |t|
-    t.string "type"
     t.integer "x_position"
     t.integer "y_position"
+    t.string "symbol"
+    t.boolean "color"
     t.integer "user_id"
     t.integer "game_id"
+    t.string "type"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
