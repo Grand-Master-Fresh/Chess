@@ -3,10 +3,11 @@ class Piece < ApplicationRecord
   belongs_to :game, optional: true
   has_many :user
 
+
   # This method checks whether a piece is present at (x, y).
   
   def occupied?(x, y)
-    game.pieces.where(x_coordinates: x, y_coordinates: y).present?
+    game.pieces.where(x_position: x, y_position: y).present?
   end
 
 # Checks path and defines it, if possible (Knight is the exception).  
@@ -27,8 +28,8 @@ class Piece < ApplicationRecord
   def is_obstructed?(destination_x, destination_y)
     @game = game
     # Converts the location into easier-to-read x and y terms
-    x1 = self.x_coordinates #assume starting points
-    y1 = self.y_coordinates
+    x1 = self.x_position #assume starting points
+    y1 = self.y_position
     x2 = destination[0]
     y2 = destination[1]
     # Determines whether the line between Piece 1 and the destination is horizontal or
@@ -93,17 +94,24 @@ class Piece < ApplicationRecord
   def move_to!(new_x, new_y)
     @game = game
     if occupied?(new_x, new_y)
-      @piece_at_destination = @game.pieces.find_by(x_coordinates: new_x, y_coordinates: new_y)
+      @piece_at_destination = @game.pieces.find_by(x_position: new_x, y_position: new_y)
       if color == @piece_at_destination.color
         fail 'destination occupied by piece of same color'
       else
-        @piece_at_destination.update_attributes(x_coordinates: nil, y_coordinates: nil, status: 'captured')
+        @piece_at_destination.update_attributes(x_position: nil, y_position: nil, status: 'captured')
         @status = @piece_at_destination.status
         @captured = true
       end
     else @captured = false
     end
+
+  end
+
+  private
+
+    def piece_params
+    	params.require(:piece).permit(:x_position, :y_position)
+    end
+
   end 
-
-
 end

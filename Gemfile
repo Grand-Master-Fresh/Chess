@@ -83,3 +83,5 @@ end
 group :development do
   gem 'rubocop', '~> 0.78.0', require: false
 end
+
+gem 'simple_form'
