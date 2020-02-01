@@ -1,6 +1,6 @@
 class PiecesController < ApplicationController
   def show 
-    @piece = Piece.find([params[:id]])
+    @piece = Piece.find(params[:id])
     @pieces = @piece.game.pieces
     # redirect_to controller: 'games', action: 'update'
   end 

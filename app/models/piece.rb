@@ -113,5 +113,4 @@ class Piece < ApplicationRecord
     	params.require(:piece).permit(:x_position, :y_position)
     end
 
-  end 
 end

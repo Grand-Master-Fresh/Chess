@@ -6,9 +6,8 @@ class GamesController < ApplicationController
   end
 
   def show
-    unless game.present?
-      return redirect_to dashboard_path
-    end
+    @game = Game.find(params[:id])
+    @pieces = @game.pieces
   end
 
 
