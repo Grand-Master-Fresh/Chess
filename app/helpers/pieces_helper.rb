@@ -6,16 +6,4 @@ module PiecesHelper
 			return "img-responsive"
 		end
 	end
-
-
-
-
-
-
-
-
-
-
-
-	
 end
