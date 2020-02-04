@@ -1,3 +1,7 @@
-<% @games.each do |game| %>
-  <p><%= link_to game.name, game_path(@game)%></p>
-<% end %>
+  
+  <h1>Join a Game</h1>
+  
+  <%@games.each do |game| %>
+    <%=  game.name %>
+    <%= button_to 'Join Game', game_path(game), :method=> :put %>
+  <% end %>

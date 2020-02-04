@@ -35,12 +35,12 @@ RSpec.describe GamesController, type: :controller do
       expect(response).to redirect_to new_user_session_path
     end
 
-    it "should allow signed in users to join unmatched games, piece user_id to be updated by the joining player id" do
+    it "should allow signed in users to join unmatched games" do
      user1 = FactoryBot.create(:user, id:1)
      user2 = FactoryBot.create(:user, id:2)
      sign_in user1
 
-     post :create, params:{game:{white_player_user_id: user1.id}}
+     post :create, params:{game:{white_player_id: user1.id}}
      game = Game.last
      sign_out user1
      sign_in user2
@@ -48,20 +48,15 @@ RSpec.describe GamesController, type: :controller do
      game.reload
      expect(game.black_player_id).to eq user2.id
      expect(response).to redirect_to game_path(game)
+     
+     it "should require users to be logged in" do
+       white_user_id = FactoryBot.create(:user)
+       black_user_id = FactoryBot.create(:user)
+       game = FactoryBot.create(:game, white_user: white_user)
+       post :create
+       expect(response).to redirect_to new_user_session_path
+     end
    end
-
-
-
-    # it "should change the current game's black_player_id to the currently logged in user" do
-    #   user = FactoryBot.create(:user)
-    #   sign_in user
-    #   game = FactoryBot.create(:game, :black_player_id => user.id)
-    #
-    #   put :update, params: { id: game.id, }
-    #
-    #   @game.black_player_id.should eq(current_user)
-    # end
-    #
 
   end
 
